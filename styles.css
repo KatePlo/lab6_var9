@@ -1,0 +1,168 @@
+/* styles.css — простой, читабельный стиль для прототипа SPA */
+/* Семантика: цвета используются минимально, всё адаптивно. */
+
+:root{
+  --bg: #f7f8fb;
+  --card: #fff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #0b76ef;
+  --accent-dark: #065fb8;
+  --danger: #d14343;
+  --max-width: 1100px;
+  --radius: 12px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-bottom:80px;
+}
+
+.container{
+  width:90%;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+/* Header */
+.site-header{
+  background:linear-gradient(90deg,#ffffff, #f3f6fb);
+  border-bottom:1px solid #e6e9ef;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:16px 0;
+}
+.logo{
+  font-weight:700;
+  color:var(--accent-dark);
+  text-decoration:none;
+  font-size:1.15rem;
+}
+.main-nav{
+  margin-left:auto;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.main-nav a{
+  text-decoration:none;
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:8px;
+}
+.main-nav a:hover{color:var(--accent); background:rgba(11,118,239,0.06)}
+.btn, .btn-outline, .btn.primary {
+  display:inline-block;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:10px;
+  background:var(--card);
+  box-shadow:0 1px 0 rgba(16,24,40,0.03);
+}
+.btn{color:var(--accent)}
+.btn-outline{color:var(--accent); border:1px solid rgba(11,118,239,0.12); background:transparent}
+.btn.primary{background:linear-gradient(180deg,var(--accent),var(--accent-dark)); color:white; box-shadow:0 6px 20px rgba(11,118,239,0.12)}
+.header-note{padding:6px 0 12px 0; color:var(--muted); font-size:0.85rem}
+
+/* Main screens layout */
+main{padding:22px 0}
+.screen{display:none; padding:16px 0;}
+.screen.active, .screen:target{display:block}
+
+/* Home cards */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:16px}
+.card{background:var(--card); padding:16px; border-radius:12px; box-shadow:0 6px 20px rgba(16,24,40,0.03)}
+.card h2{margin-top:0}
+
+/* Forms */
+form{background:var(--card); padding:14px; border-radius:12px; box-shadow:0 6px 20px rgba(16,24,40,0.03); max-width:900px}
+fieldset{border:none; padding:0}
+label{display:block; margin-bottom:12px; color:var(--text)}
+label input, label select, label textarea{
+  width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid #e6e9ef; background:transparent;
+}
+.form-actions{display:flex; gap:12px; align-items:center; margin-top:12px}
+.lead{color:var(--muted)}
+
+/* Results / routes */
+.results{margin-top:18px}
+.route{display:flex; justify-content:space-between; gap:20px; background:var(--card); padding:12px; border-radius:10px; margin-bottom:12px; align-items:center}
+.route-left{flex:1}
+.route-right{display:flex; flex-direction:column; gap:8px; align-items:flex-end}
+.route-title{font-weight:600}
+.meta{color:var(--muted); font-size:0.95rem}
+.seats.ok{color:green}
+.seats.no{color:var(--danger)}
+
+/* seating mockup */
+.seating{background:var(--card); padding:12px; border-radius:10px; margin-top:10px}
+.row{display:flex; gap:8px; margin-bottom:8px}
+.seat{border:1px solid #e6e9ef; padding:8px 12px; border-radius:8px; cursor:pointer}
+.seat.available{background:#eefdf3}
+.seat.reserved{background:#fffbe6}
+.seat.sold{background:#fff0f0}
+.legend{display:flex; gap:12px; font-size:0.9rem}
+.legend-item{display:flex; gap:6px; align-items:center}
+.box{width:14px; height:14px; border-radius:3px; display:inline-block}
+.box.available{background:#dff5e5}
+.box.reserved{background:#fff7d6}
+.box.sold{background:#ffdede}
+
+/* chips/filters */
+.filters{margin-top:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.chip{background:transparent; border:1px solid #e6e9ef; padding:6px 8px; border-radius:8px; cursor:pointer}
+
+/* Admin */
+.admin-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
+.admin-card{background:var(--card); padding:12px; border-radius:10px}
+
+/* Tickets list */
+.tickets{list-style:none; padding:0; margin:0}
+.tickets li{background:var(--card); padding:10px; border-radius:8px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center}
+
+/* Error */
+.error-code{color:var(--danger)}
+
+/* Footer */
+.site-footer{position:fixed; bottom:0; left:0; right:0; background:linear-gradient(90deg,#ffffff,#f3f6fb); border-top:1px solid #e6e9ef; padding:10px 0}
+.site-footer .container{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap}
+.site-footer code{background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:0.95rem}
+
+/* Utilities */
+.note-box{background:#fff; padding:10px; border-radius:8px; margin-top:12px; border-left:4px solid var(--accent)}
+.hint{font-size:0.85rem; color:var(--muted)}
+small{color:var(--muted)}
+a[aria-disabled="true"]{opacity:0.5; pointer-events:none}
+
+/* Responsive */
+@media (max-width:720px){
+  .route{flex-direction:column; align-items:flex-start}
+  .route-right{align-self:stretch; width:100%; display:flex; justify-content:space-between}
+  .main-nav{display:none}
+  .header-inner{gap:10px}
+}
+
+/* Accessibility focus */
+a:focus, button:focus, input:focus {outline:3px solid rgba(11,118,239,0.18); outline-offset:2px;}
+
+/* Конкретная подсказка: стрелки-ссылки (визуальная связь) */
+a.btn::after{content:" →"; font-weight:600}
+
+/* Конец styles.css */
